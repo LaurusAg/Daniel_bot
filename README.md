@@ -24,10 +24,10 @@ Cheers!
     → ros2 launch daniel_bot rsp_launch.py
   -you should see this output:
 
-[robot_state_publisher-1] [INFO] [1683730140.983874749] [robot_state_publisher]: got segment base_link
-[robot_state_publisher-1] [INFO] [1683730140.984043216] [robot_state_publisher]: got segment bicep_link
-[robot_state_publisher-1] [INFO] [1683730140.984051672] [robot_state_publisher]: got segment gantry_link
-[robot_state_publisher-1] [INFO] [1683730140.984055899] [robot_state_publisher]: got segment world
+[robot_state_publisher]: got segment base_link
+[robot_state_publisher]: got segment bicep_link
+[robot_state_publisher]: got segment gantry_link
+[robot_state_publisher]: got segment world
 
 
 that's it!

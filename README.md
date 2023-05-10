@@ -21,7 +21,7 @@ Cheers!
     > cd ..   
      colcon build --symlink-install  
      source install/setup.bash  
-     ros2 launch daniel_bot rsp_launch.py
+     ros2 launch daniel_bot rsp.launch.py
      
   -you should see this output:
 

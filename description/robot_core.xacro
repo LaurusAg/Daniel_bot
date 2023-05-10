@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
-<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+<robot name="daniel_bot" xmlns:xacro="http://ros.org/wiki/xacro">
 
-<!-- ****************** ROBOT CONSTANTS *******************************  -->
+  <!-- ****************** ROBOT CONSTANTS *******************************  -->
   <!-- Definition of geometry parameters -->
   <!-- Gantry -->
   <xacro:property name="gantry_length" value="0.5" /> <!-- El gantry es una caja de LxLxL -->
@@ -52,24 +52,22 @@
     </inertial>
   </xacro:macro>
 
-<!-- ****************** COORDINATES ORIGIN ***************************  -->
+  <!-- ****************** COORDINATES ORIGIN ***************************  -->
   <!-- Define the center of the robot -->
   <link name="world" />
 
   <!-- A simple fixed joint from our empty world link, to our base. -->
   <!-- The base origin is offset from the world origin. -->
   <joint name="gantry_joint" type="fixed">
-    <origin xyz="${gantry_length/2} ${gantry_length/2} ${gantry_length/2}" rpy="0 0 0" />
+    <origin xyz="0 0 0" rpy="0 0 0" />
     <parent link="world" />
     <child link="gantry_link" />
   </joint>
 
-
-
   <!-- ********************** GANTRY *********************************  -->
   <link name="gantry_link">
     <visual>
-      <origin xyz="0 0 -${gantry_length/2}" rpy="0 0 0" />
+      <origin xyz="0 0 ${-gantry_length/2}" rpy="0 0 0" />
       <geometry>
         <box size="${gantry_length} ${gantry_length} ${gantry_length}" />
       </geometry>
@@ -93,7 +91,7 @@
   <!-- ********************** BASE *********************************  -->
   <link name="base_link">
     <visual>
-      <origin xyz="0 0 ${-gantry_length/2-base_length/2}" rpy="0 0 0" />
+      <origin xyz="0 0 ${-base_length/2}" rpy="0 0 0" />
       <geometry>
         <cylinder length="${base_length}" radius="${base_radius}" />
       </geometry>
@@ -103,7 +101,7 @@
     </visual>
 
     <collision>
-      <origin xyz="0 0 ${-gantry_length/2-base_length/2}" rpy="0 0 0" />
+      <origin xyz="0 0 ${-base_length/2}" rpy="0 0 0" />
       <geometry>
         <cylinder length="${base_length}" radius="${base_radius}" />
       </geometry>
@@ -114,9 +112,9 @@
   </link>
 
     <!-- Connect the GANTRY to the BASE -->
-  <joint name="$base_joint" type="revolute"> <!-- WAIST -->
+  <joint name="base_joint" type="revolute"> <!-- WAIST -->
     <parent link="gantry_link" />
-    <child link="$base_link" />
+    <child link="base_link" />
     <origin xyz="0 0 ${-gantry_length}" rpy="0 0 0" />
     <limit upper="${pi}" lower="-${pi}" effort="100" velocity="100" />
     <axis xyz="0 0 1" />
@@ -125,9 +123,9 @@
 
   <!-- *********************** BICEP ******************************  -->
 
-  <link name="$bicep_link">
+  <link name="bicep_link">
     <visual>
-      <origin xyz="0 0 0" rpy="0 0 0" />
+      <origin xyz="0 0 ${-bicep_length/2}" rpy="0 0 0" />
       <geometry>
         <box size="${bicep_width} ${bicep_height} ${bicep_length}" />
       </geometry>
@@ -137,7 +135,7 @@
     </visual>
 
     <collision>
-      <origin xyz="0 0 0" rpy="0 0 0" />
+      <origin xyz="0 0 ${-bicep_length/2}" rpy="0 0 0" />
       <geometry>
         <box size="${bicep_width} ${bicep_height} ${bicep_length}" />
       </geometry>
@@ -149,17 +147,13 @@
   </link>
 
   <!-- Connect the BICEP to the BASE -->
-  <joint name="$bicep_joint" type="revolute"> <!-- SHOULDER -->
+  <joint name="bicep_joint" type="revolute"> <!-- SHOULDER -->
     <parent link="base_link" />
-    <child link="$bicep_link" />
-    <origin xyz="0 0 ${-gantry_length-base_length}" rpy="0 0 0" />
+    <child link="bicep_link" />
+    <origin xyz="0 0 ${-base_length/2}" rpy="0 0 0" />
     <limit upper="${pi/2}" lower="-${pi/2}" effort="100" velocity="100" />
     <axis xyz="0 1 0" />
   </joint>
-
-
-
-
 
 
 </robot>

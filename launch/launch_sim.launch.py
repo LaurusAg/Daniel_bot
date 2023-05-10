@@ -44,10 +44,12 @@ def generate_launch_description():
     )
 
     # Create an rviz2 node
+    rviz_config_file = os.path.join(get_package_share_directory('daniel_bot'), 'config', 'config_daniel.rviz')
     node_rviz2 = Node(
         package='rviz2',
         executable='rviz2',
-        name='rviz2'
+        name='rviz2',
+        arguments=['-d', rviz_config_file]
     )
 
     # Include rsp.launch.py

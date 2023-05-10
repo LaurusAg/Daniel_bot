@@ -23,7 +23,7 @@
         <box size="${gantry_length} ${gantry_length} ${gantry_length}" />
       </geometry>
       <material name="Red">
-        <color rgba="${255/255} ${0/255} ${0/255} 1.0" />
+        <color rgba="${255/255} ${0/255} ${0/255} 0.5" />
       </material>
     </visual>
 

@@ -11,7 +11,7 @@ Cheers!
 ## Initial steps:  
 
   - Open a new terminal (stay in the home directory).
-
+ 
     → mkdir dev_ws 
     → cd dev_ws/
     → mkdir src

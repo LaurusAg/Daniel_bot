@@ -16,7 +16,7 @@ Cheers!
      cd dev_ws/  
      mkdir src  
      cd src/  
-     git clone https://github.com/LaurusAg/Daniel_bot.git  
+     git clone https://github.com/LaurusAg/daniel_bot.git  
   - Now you're ready to go! to test it, go back to dev_ws and build with colcon using the symlink (symlink will make your life easier because u don't have to build every time you make a change). 
     > cd ..   
      colcon build --symlink-install  

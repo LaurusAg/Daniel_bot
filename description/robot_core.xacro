@@ -10,7 +10,7 @@
   <!-- A simple fixed joint from our empty world link, to our base. -->
   <!-- The base origin is offset from the world origin. -->
   <joint name="gantry_joint" type="fixed">
-    <origin xyz="0 0 0" rpy="0 0 0" />
+    <origin xyz="0 0 2" rpy="0 0 0" />
     <parent link="world" />
     <child link="gantry_link" />
   </joint>
@@ -18,41 +18,37 @@
   <!-- ********************** GANTRY *********************************  -->
   <link name="gantry_link">
     <visual>
-      <origin xyz="0 0 ${-gantry_length/2}" rpy="0 0 0" />
+      <origin xyz="0 0 ${gantry_length/2} " rpy="0 0 0" />
       <geometry>
         <box size="${gantry_length} ${gantry_length} ${gantry_length}" />
       </geometry>
-      <material name="Red">
-        <color rgba="${255/255} ${0/255} ${0/255} 0.5" />
-      </material>
+      <material name="red" />
     </visual>
 
     <collision>
-      <origin xyz="0 0 -${gantry_length/2}" rpy="0 0 0" />
+      <origin xyz="0 0 ${gantry_length/2}" rpy="0 0 0" />
       <geometry>
         <box size="${gantry_length} ${gantry_length} ${gantry_length}" />
       </geometry>
     </collision>
 
     <xacro:box_inertia m="${gantry_mass}" w="${gantry_length}" d="${gantry_length}"
-      h="${gantry_length}" />
+      h="${gantry_length}" z="${gantry_length/2}"/>
 
   </link>
 
   <!-- ********************** BASE *********************************  -->
   <link name="base_link">
     <visual>
-      <origin xyz="0 0 ${-base_length/2}" rpy="0 0 0" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
         <cylinder length="${base_length}" radius="${base_radius}" />
       </geometry>
-      <material name="Red">
-        <color rgba="${255/255} ${0/255} ${0/255} 1.0" />
-      </material>
+      <material name="blue"/>
     </visual>
 
     <collision>
-      <origin xyz="0 0 ${-base_length/2}" rpy="0 0 0" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
         <cylinder length="${base_length}" radius="${base_radius}" />
       </geometry>
@@ -66,7 +62,7 @@
   <joint name="base_joint" type="revolute"> <!-- WAIST -->
     <parent link="gantry_link" />
     <child link="base_link" />
-    <origin xyz="0 0 ${-gantry_length}" rpy="0 0 0" />
+    <origin xyz="0 0 ${-base_length/2}" rpy="0 0 0" />
     <limit upper="${pi}" lower="-${pi}" effort="100" velocity="100" />
     <axis xyz="0 0 1" />
   </joint>
@@ -80,9 +76,7 @@
       <geometry>
         <box size="${bicep_width} ${bicep_height} ${bicep_length}" />
       </geometry>
-      <material name="White">
-        <color rgba="${255/255} ${255/255} ${255/255} 1.0" />
-      </material>
+      <material name="white"/>
     </visual>
 
     <collision>
@@ -92,8 +86,8 @@
       </geometry>
     </collision>
 
-    <xacro:box_inertia m="${bicep_mass}" w="${bicep_width}" d="${bicep_height}"
-      h="${bicep_length}" /> <!-- Chequear bien cual es w d h !!!!!!!!!!!!-->
+    <xacro:box_inertia m="${bicep_mass}" w="${bicep_width}" d="${bicep_length}"
+      h="${bicep_height}" z="${-bicep_length/2}"/> <!-- Chequear bien cual es w d h !!!!!!!!!!!!-->
 
   </link>
 

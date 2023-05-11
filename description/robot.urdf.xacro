@@ -3,6 +3,5 @@
 
     <!-- ****************** add all xacros here *******************************  -->
     <xacro:include filename="robot_core.xacro" />
-    <xacro:include filename="constants.xacro" />
     
 </robot>

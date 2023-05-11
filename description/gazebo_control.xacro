@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="robot">
+
+    <!-- This plugin will publish the joint_states for the selected joints 
+   which robot_state_publisher can then use to broadcast the 
+   appropriate tf). -->
+
+    <gazebo>
+        <plugin name="gazebo_ros_joint_state_publisher"
+            filename="libgazebo_ros_joint_state_publisher.so">
+            <update_rate>20</update_rate>
+            <joint_name>base_joint</joint_name>
+            <joint_name>bicep_joint</joint_name>
+            <joint_name>forearm_joint</joint_name>
+        </plugin>
+    </gazebo>
+
+    <!-- This plugin will read a JointTrajectory message from the 
+/set_joint_trajectory topic and move the machine accordingly. 
+It's a bit clunky but it works. -->
+
+    <gazebo>
+        <plugin name="gazebo_ros_joint_pose_trajectory"
+            filename="libgazebo_ros_joint_pose_trajectory.so">
+            <update_rate>20</update_rate>
+        </plugin>
+    </gazebo>
+
+</robot>

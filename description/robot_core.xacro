@@ -37,6 +37,8 @@
 
   </link>
 
+
+
   <!-- ********************** BASE *********************************  -->
   <link name="base_link">
     <visual>
@@ -100,7 +102,7 @@
     <axis xyz="0 1 0" />
   </joint>
 
- <!-- *********************** FOREARM ******************************  -->
+  <!-- *********************** FOREARM ******************************  -->
 
   <link name="forearm_link">
     <visual>
@@ -119,7 +121,7 @@
     </collision>
 
     <xacro:box_inertia m="${forearm_mass}" w="${forearm_width}" d="${forearm_length}"
-      h="${forearm_height}" z="${-forearm_length/2}" /> <!-- Chequear bien cual es w d h !!!!!!!!!!!!-->
+      h="${forearm_height}" z="${-forearm_length/2}" /> <!-- Chequear bien cual es w d h   !!!!!!!!!!!!-->
 
   </link>
 
@@ -131,7 +133,6 @@
     <limit upper="${pi/2}" lower="-${pi/2}" effort="100" velocity="100" />
     <axis xyz="0 1 0" />
   </joint>
-
 
 
 </robot>

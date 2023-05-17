@@ -37,6 +37,10 @@
 
   </link>
 
+     <gazebo reference="gantry_link">
+    <material>Gazebo/Yellow</material>
+  </gazebo>
+
 
 
   <!-- ********************** BASE *********************************  -->
@@ -69,6 +73,9 @@
     <axis xyz="0 0 1" />
   </joint>
 
+   <gazebo reference="base_link">
+    <material>Gazebo/Blue</material>
+  </gazebo>
 
   <!-- *********************** BICEP ******************************  -->
 
@@ -92,6 +99,10 @@
       h="${bicep_height}" z="${-bicep_length/2}" /> <!-- Chequear bien cual es w d h !!!!!!!!!!!!-->
 
   </link>
+
+  <gazebo reference="bicep_link">
+    <material>Gazebo/Yellow</material>
+  </gazebo>
 
   <!-- Connect the BICEP to the BASE -->
   <joint name="bicep_joint" type="revolute"> <!-- SHOULDER -->
@@ -124,6 +135,10 @@
       h="${forearm_height}" z="${-forearm_length/2}" /> <!-- Chequear bien cual es w d h   !!!!!!!!!!!!-->
 
   </link>
+
+  <gazebo reference="forearm_link">
+    <material>Gazebo/Blue</material>
+  </gazebo>
 
   <!-- Connect the FOREARM to the BICEP -->
   <joint name="forearm_joint" type="revolute"> <!-- ELBOW -->
